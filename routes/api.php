@@ -27,3 +27,15 @@ Route::group([
     Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
     Route::post('me', 'App\Http\Controllers\AuthController@me');
 });
+
+
+Route::group([
+    'middleware' => 'api',
+],
+    function ($router) {
+        Route::post('quotation', 'App\Http\Controllers\QuoteController@quotation');
+        Route::get('quotes', 'App\Http\Controllers\QuoteController@index');
+        Route::get('quote/{id}', 'App\Http\Controllers\QuoteController@show');
+
+    }
+);
